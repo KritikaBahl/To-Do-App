@@ -1,0 +1,60 @@
+body {
+ background: darkturquoise;
+}
+
+ h2 {font-family: cursive;
+font-size: 32px;
+text-align: center;
+color: mediumblue;
+
+}
+li
+{
+font-style: oblique;
+font-family: -webkit-body;
+font-size: 50px;
+ padding-top: 15px;
+color: deeppink;
+}
+
+
+h1 {
+        font-family: cursive;
+	font-size:100px;
+	text-align: center;
+        color: blue;
+        margin-top: 20px;
+        margin-bottom: 50px;
+}
+
+.btn_change
+{
+  height: 40px;
+  border-radius: 5px;
+width: 150px;
+background-color: greenyellow;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+font-family: monospace;
+  font-size: 20px;
+}
+
+.completed{
+text-decoration: line-through;
+color: darkorchid;
+}
+
+
+#input_txt
+{
+height: 65px;
+width: 800px;
+font-family: -webkit-body;
+font-size: 35px;
+padding-left: 10px;
+border-radius: 10px;
+border: 3px solid blueviolet;
+margin-left: 25px;
+}

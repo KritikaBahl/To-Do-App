@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src= "angularjs.js"></script>
+</head>
+
+<body>
+
+<div ng-app="myApp" ng-controller="secondCtrl">
+<h1> <img src ="C:\Users\844660\Desktop\angjs_finl\Images\logo.jpg" style ="height: 150px;"/>Your ToDo List </h1>
+<ul style="list-style-type:none ; margin-left : 195px" id = "main">
+
+<li> <input type="checkbox" id = "check1" ng-model = "checkall" ng-change = "CrossAllItem()"> <input type="text" ng-model="taskName" id = "input_txt" placeholder="What needs to be done?" ng-keyup="addItem()"></li>
+<li  class = "asd" ng-repeat="x in listitems | filter:{ status: actualStatus }">
+   <input type="checkbox" ng-model="x.status" /> <span ng-class = "{'completed':x.status}" style = "padding-left: 25px;">{{x.taskdes}}</span
+  </li>
+
+</ul>
+
+<button type="button" ng-click="actualStatus = 'false'" class = "btn_change" style = "margin-left: 460px;">Active</button>
+<button type="button" ng-click="actualStatus = 'true'"  class = "btn_change">Completed</button>
+<button type="button" ng-click="actualStatus = ''"  class = "btn_change" >All</button>
+ <h2>You've got <span style = "color: deeppink;">{{getActiveTodos()}}</span> out of <span style = "color: deeppink;">{{getTotalTodos()}} </span>things to do</h2>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('secondCtrl', function($scope) {
+  var counter = false;
+$scope.actualStatus = '';
+$scope.listitems = [];
+ var storeitems =[];
+$scope.addItem = function() {
+               if(event.keyCode == 13 && $scope.taskName)
+			   {
+        var data = { taskdes:  $scope.taskName , taskStatus : "active", status:false };
+        $scope.listitems.push( data );
+  $scope.taskName= " ";
+  }
+    };
+
+$scope.CrossAllItem = function() {
+  
+  if($scope.checkall ==true)
+{  
+	for(i=0;i<$scope.listitems.length;i++)
+	 {
+      $scope.listitems[i].status = true;
+	  counter =true ;
+	 }
+}
+	if($scope.checkall == false)
+{  
+	for(i=0;i<$scope.listitems.length;i++)
+	 {
+      $scope.listitems[i].status = false;
+	 counter = false ;
+	 }
+} 
+	 
+	 
+    };
+	
+$scope.getTotalTodos = function () {
+    return $scope.listitems.length;
+  };
+$scope.getActiveTodos = function () {
+var  activeCounter =0;
+ for(i=0;i<$scope.listitems.length;i++)
+{
+    if(  $scope.listitems[i].status == false)
+{
+ activeCounter++;
+}
+}
+
+return activeCounter;
+  };
+  
+
+ 
+});
+</script>
+
+</body>
+</html>
